@@ -8,3 +8,19 @@ body {
 #my_canvas {
 	background: lightgray;
 }
+
+#my_speedometer {
+	position: absolute;
+	align-items: center;
+	top: 1%;
+	left: 1%;
+	background: white;
+}
+
+#speedometer {
+	position: relative;
+	color: black;
+	font-weight: 500;
+	top: 100;
+	left: 100;
+}
