@@ -1,3 +1,5 @@
+let current_speed = this.speed;
+
 class Controls {
     constructor() {
         this.forward = false;
@@ -24,7 +26,8 @@ class Controls {
                     this.right=true;
                     break;
             }
-            console.table(this);
+            //console.table(this);
+            console.log("Car speed: ", Math.trunc(car.speed * 15), "feet/second");
         }
         window.onkeyup=(event)=>{
             switch(event.key){
@@ -41,7 +44,7 @@ class Controls {
                     this.right=false;
                     break;
             }
-            console.table(this);            
+            //console.table(this);            
         }
     }
 }
