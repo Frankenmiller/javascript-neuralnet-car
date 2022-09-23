@@ -25,9 +25,10 @@ class Controls {
                 case "ArrowRight":
                     this.right=true;
                     break;
-            }
-            //console.table(this);
-            console.log("Car speed: ", Math.trunc(car.speed * 15), "feet/second");
+                }
+                //console.table(this);
+                // console.log("Car speed: ", Math.trunc(car.speed * 15), "feet/second");
+                // console.log("Angle: ", Math.round(car.angle * 31.4), "degrees");        
         }
         window.onkeyup=(event)=>{
             switch(event.key){
@@ -45,6 +46,7 @@ class Controls {
                     break;
             }
             //console.table(this);            
+            console.log("Angle: ", Math.round(car.angle * 56.52), "degrees");
         }
     }
 }
