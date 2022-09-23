@@ -9,11 +9,14 @@ class Car {
 		this.max_speed = 3;
 		this.friction = 0.05;
 		this.angle = 0;
+		this.sensor = new Sensor();
 		this.controls = new Controls();
 	}	
 
 	update() {
 		this.#move();
+		console.log(typeof this.sensor.rays)
+		this.sensor.update();
 	}
 
 	#move() {
@@ -60,5 +63,6 @@ class Car {
 		);
 		context.fill();
 		context.restore();
+		this.sensor.draw(context);
 	}
 }
