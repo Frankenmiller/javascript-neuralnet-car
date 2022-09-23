@@ -13,10 +13,9 @@ class Car {
 		this.controls = new Controls();
 	}	
 
-	update() {
+	update(road_boarders) {
 		this.#move();
-		console.log(typeof this.sensor.rays)
-		this.sensor.update();
+		this.sensor.update(road_boarders);
 	}
 
 	#move() {
@@ -51,6 +50,7 @@ class Car {
 	}
 
 	draw(context) {
+		this.sensor.draw(context);
 		context.save();
 		context.translate(this.x, this.y);
 		context.rotate(-this.angle);
@@ -63,6 +63,5 @@ class Car {
 		);
 		context.fill();
 		context.restore();
-		this.sensor.draw(context);
 	}
 }
