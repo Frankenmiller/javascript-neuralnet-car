@@ -15,9 +15,12 @@ function animate(){
     car.update();
     speedometer.update();
     canvas.height = window.innerHeight;
+    context.save();
+    context.translate(0, -car.y + canvas.height * 0.5);
     inst_panel.width = (window.innerWidth / 2) - ((window.innerWidth / 100) * 2) - 100;
     road.draw(context);
     car.draw(context);
     speedometer.draw(dashboard);
+    context.restore();
     requestAnimationFrame(animate);
 }
