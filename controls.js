@@ -46,7 +46,6 @@ class Controls {
                     break;
             }
             //console.table(this);            
-            console.log("Angle: ", Math.round(car.angle * 56.52), "degrees");
         }
     }
 }

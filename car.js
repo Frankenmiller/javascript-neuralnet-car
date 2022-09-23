@@ -10,7 +10,7 @@ class Car {
 		this.friction = 0.05;
 		this.angle = 0;
 		this.controls = new Controls();
-	}
+	}	
 
 	update() {
 		if (this.controls.forward) {
