@@ -12,7 +12,7 @@ const speedometer = new Speedometer(10, 10, 50, 50);
 animate();
 
 function animate(){
-    car.update();
+    car.update(road.borders);
     speedometer.update();
     canvas.height = window.innerHeight;
     context.save();

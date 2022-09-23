@@ -9,11 +9,13 @@ class Car {
 		this.max_speed = 3;
 		this.friction = 0.05;
 		this.angle = 0;
+		this.sensor = new Sensor();
 		this.controls = new Controls();
 	}	
 
-	update() {
+	update(road_boarders) {
 		this.#move();
+		this.sensor.update(road_boarders);
 	}
 
 	#move() {
@@ -48,6 +50,7 @@ class Car {
 	}
 
 	draw(context) {
+		this.sensor.draw(context);
 		context.save();
 		context.translate(this.x, this.y);
 		context.rotate(-this.angle);
