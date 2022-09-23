@@ -16,3 +16,41 @@ body {
 	left: 1%;
 	background: white;
 }
+
+#footer_right{
+	z-index: 1;
+	position: relative;
+	color: black;
+	bottom: 30px;
+	left: 32%;
+}
+
+#footer_left{
+	z-index: 1;
+	font-size: 18px;
+	position: relative;
+	color: black;
+	bottom: 50px;
+	right: 32%;
+}
+
+p {
+	z-index: 1;
+	position: absolute;
+	color: black;
+	font-size: 18px;
+	left: 68%;
+	text-align: left;
+	top: 20%;
+	transform: translateX(-8%);
+}
+
+/* p #linked_in {
+	z-index: 1;
+	position: absolute;
+	color: black;
+	font-size: 18px;
+	left: 75%;
+	bottom: 70px;
+	transform: translateX(-25%);
+} */
