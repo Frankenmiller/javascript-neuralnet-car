@@ -3,10 +3,12 @@ body {
 	background: darkgray;
 	overflow: hidden;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 #my_canvas {
 	background: lightgray;
+	display: none;
 }
 
 #my_speedometer {
@@ -15,26 +17,33 @@ body {
 	top: 5px;
 	left: 1%;
 	background: white;
+	display: none;
 }
 
 #footer_right{
 	z-index: 1;
-	position: relative;
+	position: absolute;
 	color: black;
-	bottom: 30px;
-	left: 32%;
+	bottom: 15px;
+	font-weight: 700;
+	right: 50%;
+	transform: translateX(50%);
+	font-size: 15px;
 }
 
 #footer_left{
 	z-index: 1;
-	font-size: 18px;
-	position: relative;
+	font-size: 30px;
+	position: absolute;
 	color: black;
-	bottom: 50px;
-	right: 32%;
+	bottom: 40px;
+	left: 50%;
+	align-items: center;
+	transform: translateX(-50%);
 }
 
-p {
+#screen-okay {
+	display: none;
 	z-index: 1;
 	position: absolute;
 	color: black;
@@ -45,12 +54,54 @@ p {
 	transform: translateX(-8%);
 }
 
-/* p #linked_in {
+#small-screen {
+	display: inline;
 	z-index: 1;
 	position: absolute;
 	color: black;
-	font-size: 18px;
-	left: 75%;
-	bottom: 70px;
-	transform: translateX(-25%);
-} */
+	font-size: 30px;
+	width: 80%;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 10%;
+}
+
+#astronaut {
+	left: 50%;
+	transform: translateY(75%);
+	display: inline;
+	z-index: 1;
+}
+
+@media only screen and (min-width: 680px) {
+	#my_canvas {
+		display: inline;
+	}
+	#footer_left{
+		position: absolute;
+		font-size: 18px;
+		left: 25%;
+		transform: translateX(-75%);	
+		bottom: 20px;			
+	}
+	#footer_right{
+		position: absolute;
+		bottom: 20px;
+		right: 25%;
+		transform: translateX(75%);
+		font-size: 15px;
+		font-weight: 400;	
+	}	
+	#my_speedometer {
+		display: inline;
+	}
+	#screen-okay {
+		display: inline;
+	}
+	#small-screen {
+		display: none;
+	}
+	#astronaut {
+		display: none;
+	}
+}
