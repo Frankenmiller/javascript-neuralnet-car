@@ -14,12 +14,12 @@ const traffic = [new Car(road.get_lane_center(1), 75, 30, 50, "DUMMY", 2)];
 
 animate();
 
-function animate(){
+function animate(time){
     for (let i=0; i<traffic.length; i++) {traffic[i].update(road.borders, []);}
     car.update(road.borders, traffic);
     speedometer.update();
     car_canvas.height = window.innerHeight;
-    net_canvas.height = window.innerHeight -200;
+    net_canvas.height = 275;
     car_context.save();
     car_context.translate(0, -car.y + car_canvas.height * 0.7);
     inst_panel.width = (window.innerWidth / 2) - ((window.innerWidth / 100) * 2) - 100;
@@ -29,6 +29,7 @@ function animate(){
     car.draw(car_context, "black");
     speedometer.draw(dashboard);
     car_context.restore();
+    net_context.lineDashOffset = -time / 50;
     Visualizer.drawNetwork(net_context,car.brain);
     requestAnimationFrame(animate);
 }
