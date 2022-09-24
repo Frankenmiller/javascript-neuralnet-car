@@ -6,9 +6,9 @@ inst_panel.height = 100;
 const context = canvas.getContext("2d");
 const dashboard = inst_panel.getContext("2d");
 const road = new Road(canvas.width/2, canvas.width * 0.9);
-const car = new Car(road.get_lane_center(1), 150, 30, 50, "KEYS");
+const car = new Car(road.get_lane_center(1), 150, 30, 50, "AI");
 const speedometer = new Speedometer(10, 10, 50, 50);
-const traffic = [new Car(road.get_lane_center(1), -225, 30, 50, "DUMMY", 2)];
+const traffic = [new Car(road.get_lane_center(1), 75, 30, 50, "DUMMY", 2)];
 
 animate();
 
