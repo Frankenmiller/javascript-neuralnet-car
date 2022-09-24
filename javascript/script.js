@@ -21,8 +21,8 @@ function animate(){
     context.translate(0, -car.y + canvas.height * 0.7);
     inst_panel.width = (window.innerWidth / 2) - ((window.innerWidth / 100) * 2) - 100;
     road.draw(context);
-    for (let i=0; i<traffic.length; i++) {traffic[i].draw(context);}
-    car.draw(context);
+    for (let i=0; i<traffic.length; i++) {traffic[i].draw(context, "white");}
+    car.draw(context, "black");
     speedometer.draw(dashboard);
     context.restore();
     requestAnimationFrame(animate);
