@@ -9,21 +9,33 @@ class Sensor {
         this.readings = [];
     }
 
-    update(road_boarders){
+    update(road_boarders, traffic){
         this.#cast_rays();
         this.readings = [];
         for(let i=0;i<this.rays.length;i++) {
-            this.readings.push(this.#get_reading(this.rays[i], road_boarders));
+            this.readings.push(this.#get_reading(
+                this.rays[i], road_boarders, traffic
+            ));
         }
     }
 
-    #get_reading(ray, road_boarders){
+    #get_reading(ray, road_boarders, traffic){
         let touches = [];
         for(let i=0;i<road_boarders.length;i++){
             const contact = get_intersect(ray[0], ray[1],
                 road_boarders[i][0], road_boarders[i][1]    
             )
             if (contact) {touches.push(contact);}
+        }
+        for (let i=0; i<traffic.length; i++) {
+            const poly = traffic[i].polygon;
+            for (let j=0; j<poly.length; j++) {
+                const value=get_intersect(
+                    ray[0], ray[1], poly[j], 
+                    poly[(j+1)%poly.length]
+                );
+                if (value) {touches.push(value);}
+            }
         }
         if(touches.length==0) {
             return null;

@@ -34,7 +34,7 @@
 }
 
 .preloader.hidden {
-	animation: 1.5s fadeout 2.5s;
+	animation: 0.5s fadeout 0.5s;
 	animation-fill-mode: forwards;
 }
 

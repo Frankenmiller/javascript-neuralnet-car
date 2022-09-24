@@ -1,31 +1,36 @@
 class Car {
-	constructor(x, y, width, height) {
+	constructor(x, y, width, height, control_type, max_speed=3) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.speed = 0;
 		this.acceleration = 0.2;
-		this.max_speed = 3;
+		this.max_speed = max_speed;
 		this.friction = 0.05;
 		this.angle = 0;
 		this.damaged = false;
-		this.sensor = new Sensor();
-		this.controls = new Controls();
+		if (control_type != "DUMMY") {this.sensor = new Sensor();}
+		this.controls = new Controls(control_type);
 	}	
 
-	update(road_boarders) {
+	update(road_boarders, traffic) {
 		if (!this.damaged) {
 			this.#move();
 			this.polygon = this.#create_polygon();
-			this.damaged = this.#asess_damage(road_boarders);
+			this.damaged = this.#asess_damage(road_boarders, traffic);
 		}
-		this.sensor.update(road_boarders);
+		if (this.sensor) {this.sensor.update(road_boarders, traffic);}
 	}
 
-	#asess_damage(road_boarders) {
+	#asess_damage(road_boarders, traffic) {
 		for (let i=0; i<road_boarders.length; i++) {
 			if (poly_intersect(this.polygon, road_boarders[i])) {
+				return true;
+			} 
+		}
+		for (let i=0; i<traffic.length; i++) {
+			if (poly_intersect(this.polygon, traffic[i].polygon)) {
 				return true;
 			} 
 		}
@@ -78,18 +83,18 @@ class Car {
 		this.y -= Math.cos(this.angle) * this.speed;
 	}
 
-    draw(ctx){
-        if(this.damaged){
-            ctx.fillStyle="orange";
+    draw(context, color){
+		if(this.damaged){
+			context.fillStyle = "orange";
         }else{
-            ctx.fillStyle="black";
+			context.fillStyle = color;
         }
-        ctx.beginPath();
-        ctx.moveTo(this.polygon[0].x,this.polygon[0].y);
+        context.beginPath();
+        context.moveTo(this.polygon[0].x,this.polygon[0].y);
         for(let i=1;i<this.polygon.length;i++){
-            ctx.lineTo(this.polygon[i].x,this.polygon[i].y);
+			context.lineTo(this.polygon[i].x,this.polygon[i].y);
         }
 		context.fill();
-		this.sensor.draw(context);
+		if (this.sensor) {this.sensor.draw(context);}
 	}
 }
