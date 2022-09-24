@@ -62,7 +62,7 @@ body {
 	z-index: 1;
 	position: absolute;
 	color: black;
-	font-size: 30px;
+	font-size: 25px;
 	width: 80%;
 	left: 50%;
 	transform: translateX(-50%);
@@ -72,10 +72,35 @@ body {
 
 #astronaut {
 	left: 50%;
-	transform: translateY(75%);
+	transform: translateY(50%);
 	display: inline;
 	z-index: 1;
 }
+
+
+a:link {
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+  }
+  
+  a:visited {
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+  }
+  
+  a:hover {
+	color: grey;
+	background-color: transparent;
+	text-decoration: underline;
+  }
+  
+  a:active {
+	color: yellow;
+	background-color: transparent;
+	text-decoration: underline;
+  }
 
 @media only screen and (min-width: 680px) {
 	#my_canvas {
@@ -87,6 +112,7 @@ body {
 		left: 25%;
 		transform: translateX(-75%);	
 		bottom: 20px;			
+		color: black;
 	}
 	#footer_right{
 		position: absolute;
@@ -95,12 +121,14 @@ body {
 		transform: translateX(75%);
 		font-size: 15px;
 		font-weight: 400;	
+		color: black;
 	}	
 	#my_speedometer {
 		display: inline;
 	}
 	#screen-okay {
 		display: inline;
+		top: 5px;
 	}
 	#small-screen {
 		display: none;
@@ -111,5 +139,40 @@ body {
 	body {
 		background: darkgray;
 		color: black;
-	}		
+	}
+	a:link {
+		color: black;
+	  }		
+	a:visited {
+		color: black;
+	  }		
+	  a:hover {
+		color: white;
+	  }	  
+}
+
+@media only screen and (min-width: 1200px) {
+	#screen-okay {
+		font-size: 25px;
+		left: 62%;
+		top: 5px;
+		transform: translateX(-5%);
+	}
+	#footer_left{
+		position: absolute;
+		font-size: 25px;
+		color: black;
+		left: 25%;
+		transform: translateX(-75%);	
+		bottom: 20px;			
+	}
+	#footer_right{
+		position: absolute;
+		bottom: 20px;
+		right: 25%;
+		transform: translateX(75%);
+		font-size: 20px;
+		font-weight: 400;	
+		color: black;
+	}	
 }
