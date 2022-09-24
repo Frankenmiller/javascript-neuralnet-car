@@ -17,10 +17,20 @@
 }
 
 .preloader p {
+	position: absolute;
 	font-family: sans-serif;
 	font-size: 25px;
-	position: absolute;
-	bottom: 30%;
+}
+
+#top {
+	left: 50%;
+	width: 70%;
+	transform: translate(-50%, -150px);
+}
+
+#bottom {
+	left: 50%;
+	transform: translate(-50%, 125px);
 }
 
 .preloader.hidden {
