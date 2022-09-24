@@ -91,7 +91,7 @@ a:link {
   }
   
   a:hover {
-	color: grey;
+	color: blue;
 	background-color: transparent;
 	text-decoration: underline;
   }
