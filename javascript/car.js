@@ -15,9 +15,11 @@ class Car {
 	}	
 
 	update(road_boarders) {
-		this.#move();
-		this.polygon = this.#create_polygon();
-		this.damaged = this.#asess_damage(road_boarders);
+		if (!this.damaged) {
+			this.#move();
+			this.polygon = this.#create_polygon();
+			this.damaged = this.#asess_damage(road_boarders);
+		}
 		this.sensor.update(road_boarders);
 	}
 
