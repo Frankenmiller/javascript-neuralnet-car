@@ -11,6 +11,15 @@ body {
 	display: none;
 }
 
+#net_canvas {
+	background: black;
+	display: none;
+	left: 0;
+	top: 115px;
+	position: absolute;
+	left: 1%;
+}
+
 #my_speedometer {
 	position: absolute;
 	align-items: center;
@@ -104,6 +113,9 @@ a:link {
 
 @media only screen and (min-width: 680px) {
 	#my_canvas {
+		display: inline;
+	}
+	#net_canvas {
 		display: inline;
 	}
 	#footer_left{
