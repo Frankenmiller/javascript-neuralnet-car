@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Self-Driving car built in JavaScript</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stars.css">  
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stars.css">  
+    <link rel="stylesheet" href="css/preloader.css">  
 </head>
 <body>
+        <div class="preloader">
+            <img src="images/loader.gif" alt="loading..." />
+            <p>loading...</p>
+        </div>
+        <script src="javascript/preloader.js"></script>
         <canvas id="my_canvas"></canvas>
         <canvas id="my_speedometer"></canvas>
-        <script src="sensors.js"></script>
-        <script src="utils.js"></script>
-        <script src="road.js"></script>
-        <script src="controls.js"></script>
-        <script src="car.js"></script>
-        <script src="speedometer.js"></script>
-        <script src="script.js"></script>
+        <script src="javascript/sensors.js"></script>
+        <script src="javascript/utils.js"></script>
+        <script src="javascript/road.js"></script>
+        <script src="javascript/controls.js"></script>
+        <script src="javascript/car.js"></script>
+        <script src="javascript/speedometer.js"></script>
+        <script src="javascript/script.js"></script>
         <div id="space">
             <div class="stars"></div>
             <div class="stars"></div>
@@ -26,10 +32,10 @@
             <div class="stars"></div>
            </div>        
 </body>
-    <p id="screen-okay">This machine learning project should only be viewed on desktop so that keyboard can be used as valid input. Press your up arrow to see little car throttle up down and even reverse. Use left right arrows to steer. The goal is to teach little car to drive on his own thru obstacles I'll be merging into project. Check out my LinkedIn profile please and endorse my skills or give me good referral, I'm hoping get to work soon</p>
+    <p id="screen-okay">This machine learning project should only be viewed on desktop so that keyboard can be used as valid input. Press your up arrow to see little car throttle up down and even reverse. Use left right arrows to steer. The goal is to teach little car to drive on his own thru obstacles I'll be merging into project. Check out my LinkedIn profile please and endorse my skills or give me good referral, I'm hoping get to work soon.</p>
     <p id="small-screen">This machine learning project should only be viewed on desktop device.</p>
     
-    <img src="astronaut.png" alt="" id="astronaut">
+    <img src="images/astronaut.png" alt="" id="astronaut">
 <footer id="footer_right">Created ©2022 by FRANKENMILLER</footer>
 <footer id="footer_left"><a href="https://www.linkedin.com/in/frankenmiller">linkedin.com/in/frankenmiller</a></footer>
 </html>
