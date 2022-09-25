@@ -1,87 +1,120 @@
-class Sensor {
+class Sensor{
     constructor(car){
-        this.car = car;
-        this.rayCount = 5;
-        this.rayLength = 150;
-        this.raySpread = Math.PI / 2;
+        this.car=car;
+        this.rayCount=5;
+        this.rayLength=150;
+        this.raySpread=Math.PI/2;
 
-        this.rays = [];
-        this.readings = [];
+        this.rays=[];
+        this.readings=[];
     }
 
-    update(road_boarders, traffic){
-        this.#cast_rays();
-        this.readings = [];
-        for(let i=0;i<this.rays.length;i++) {
-            this.readings.push(this.#get_reading(
-                this.rays[i], road_boarders, traffic
-            ));
+    update(roadBorders,traffic){
+        this.#castRays();
+        this.readings=[];
+        for(let i=0;i<this.rays.length;i++){
+            this.readings.push(
+                this.#getReading(
+                    this.rays[i],
+                    roadBorders,
+                    traffic
+                )
+            );
         }
     }
 
-    #get_reading(ray, road_boarders, traffic){
-        let touches = [];
-        for(let i=0;i<road_boarders.length;i++){
-            const contact = get_intersect(ray[0], ray[1],
-                road_boarders[i][0], road_boarders[i][1]    
-            )
-            if (contact) {touches.push(contact);}
-        }
-        for (let i=0; i<traffic.length; i++) {
-            const poly = traffic[i].polygon;
-            for (let j=0; j<poly.length; j++) {
-                const value=get_intersect(
-                    ray[0], ray[1], poly[j], 
-                    poly[(j+1)%poly.length]
-                );
-                if (value) {touches.push(value);}
+    #getReading(ray,roadBorders,traffic){
+        let touches=[];
+
+        for(let i=0;i<roadBorders.length;i++){
+            const touch=get_intersect(
+                ray[0],
+                ray[1],
+                roadBorders[i][0],
+                roadBorders[i][1]
+            );
+            if(touch){
+                touches.push(touch);
             }
         }
-        if(touches.length==0) {
+
+        for(let i=0;i<traffic.length;i++){
+            const poly=traffic[i].polygon;
+            for(let j=0;j<poly.length;j++){
+                const value=get_intersect(
+                    ray[0],
+                    ray[1],
+                    poly[j],
+                    poly[(j+1)%poly.length]
+                );
+                if(value){
+                    touches.push(value);
+                }
+            }
+        }
+
+        if(touches.length==0){
             return null;
-        } else {
-            const offsets = touches.map(e=>e.offset);
-            const min_offset = Math.min(...offsets);
-            return touches.find(e=>e.offset==min_offset);
+        }else{
+            const offsets=touches.map(e=>e.offset);
+            const minOffset=Math.min(...offsets);
+            return touches.find(e=>e.offset==minOffset);
         }
     }
 
+    #castRays(){
+        this.rays=[];
+        for(let i=0;i<this.rayCount;i++){
+            const rayAngle=lerp(
+                this.raySpread/2,
+                -this.raySpread/2,
+                this.rayCount==1?0.5:i/(this.rayCount-1)
+            ) + cars[0].angle;
 
-
-    #cast_rays() {
-        this.rays = [];
-        for (let i=0; i<this.rayCount; i++){
-            const rayAngle = lerp(
-                this.raySpread / 2,
-                -this.raySpread / 2,
-                i / (this.rayCount -1)
-            ) + car.angle;
-            const start={x:car.x, y:car.y};
-            const end={x:car.x-Math.sin(rayAngle)*this.rayLength,
-                        y:car.y-Math.cos(rayAngle)*this.rayLength};
+            const start={x:cars[0].x, y:cars[0].y};
+            const end={
+                x:cars[0].x-
+                    Math.sin(rayAngle)*this.rayLength,
+                y:cars[0].y-
+                    Math.cos(rayAngle)*this.rayLength
+            };
             this.rays.push([start,end]);
         }
     }
 
-    draw(context) {
-        for (let i=0; i<this.rayCount; i++) {
-            let end = this.rays[i][1];
+    draw(ctx){
+        for(let i=0;i<this.rayCount;i++){
+            let end=this.rays[i][1];
             if(this.readings[i]){
                 end=this.readings[i];
             }
-            context.beginPath();
-            context.lineWidth = 2;
-            context.strokeStyle = "yellow";
-            context.moveTo(this.rays[i][0].x, this.rays[i][0].y);
-            context.lineTo(end.x, end.y);
-            context.stroke();
 
-            context.beginPath();
-            context.lineWidth = 2;
-            context.strokeStyle = "black";
-            context.moveTo(this.rays[i][1].x, this.rays[i][1].y);
-            context.lineTo(end.x, end.y);
-            context.stroke();
-        }        
-    }
+            ctx.beginPath();
+            ctx.lineWidth=2;
+            ctx.strokeStyle="yellow";
+            ctx.moveTo(
+                this.rays[i][0].x,
+                this.rays[i][0].y
+            );
+            ctx.lineTo(
+                end.x,
+                end.y
+            );
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth=2;
+            ctx.strokeStyle="black";
+            ctx.moveTo(
+                this.rays[i][1].x,
+                this.rays[i][1].y
+            );
+            ctx.lineTo(
+                end.x,
+                end.y
+            );
+            ctx.stroke();
+        }
+    }        
 }
+
