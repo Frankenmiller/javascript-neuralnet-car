@@ -15,10 +15,10 @@ class Speedometer {
         dashboard.font = "20px Arial";
         dashboard.fillStyle = "black";
         dashboard.fillText("Speed: ", (window.innerWidth / 6) -100, 40)
-        dashboard.fillText(Math.trunc(car.speed * 20), (window.innerWidth / 6) -30, 40)
+        dashboard.fillText(Math.trunc(cars[0].speed * 20), (window.innerWidth / 6) -30, 40)
         dashboard.fillText("feet/sec", (window.innerWidth / 6), 40)
         dashboard.fillText("Angle: ", (window.innerWidth / 6) -100, 70)
-		dashboard.fillText(Math.round((car.angle * 56.52) % 180), (window.innerWidth / 6) -40, 70)
+		dashboard.fillText(Math.round((cars[0].angle * 56.52) % 180), (window.innerWidth / 6) -40, 70)
         dashboard.fillText("degrees", (window.innerWidth / 6), 70)
 	}
 };
